@@ -25,3 +25,37 @@ img { /* stylelint-disable-line */
 }
 
 // TODO import
+.protection {
+  background-color: rgba(255,255,255,0.7);
+  height: 100%;
+  width: 100%;
+}
+ .header{
+   
+   
+   &__img{
+    background: url("../../img/header.jpg") no-repeat center;
+    opacity: 0.7;
+    background-size: 100%;
+    height: 250px;
+    @media(max-width: 750px){
+      height: 125px;
+    }
+  }
+
+  &__content{
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    @media(max-width: 750px){
+      top: 30px;
+      
+    }
+  }
+  
+}
