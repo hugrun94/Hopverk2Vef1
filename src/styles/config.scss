@@ -1,3 +1,22 @@
 $max-width: 1200px;
 $gutter: 20px;
 
+$colors: (
+    black: #000, 
+    grey: #999, 
+    light-grey: #aaa,
+    lighter-grey: #ccc,
+    green:  #2d2, 
+    dark-green: #1a1,
+    yellow:  #fcffd2,
+    pink: #cc9694
+);
+$lettersize: 16px; 
+
+@import url('https://fonts.googleapis.com/css?family=Lora|Roboto+Mono');
+
+$fonts: (
+    roboto mono: 'Roboto Mono',
+    lora: 'Lora', 
+    time new roman: 'Times New Roman',
+);
