@@ -1,4 +1,6 @@
+
 import babel from 'rollup-plugin-babel';
+j
 
 module.exports = {
   input: './src/index.js',
