@@ -1,5 +1,23 @@
 # Hópverkefni 2
 
+#### Github branches - instructions
+Go to existing branch f.ex. master:  
+`git checkout master`
+
+Creating a new branch named f.ex. css (branch to work on css):  
+`git checkout -b css`
+
+Committing and pushing after making some changes:  
+`git add .`  
+`git commit -m "Short message about the changes you made"`  
+`git pull origin master`  
+`git push origin css`
+
+To merge with master go to github.com/hugrun94/Hopverk2Vef1 and create a pull request.
+
+
+
+
 Verkefnið felst í því að smíða prótótýpu af fyrirlestravef fyrir vefforritun. Gefin eru gögn sem unnin eru uppúr námsefni vetrarins.
 
 Gefnar eru [fyrirmyndir](utlit/) í `500px` og `1500px` án grindar ásamt `1500px` með grind. Allt efni skal skalast snyrtilega á milli.
