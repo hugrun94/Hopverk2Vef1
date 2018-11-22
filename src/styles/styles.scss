@@ -101,3 +101,47 @@ img { /* stylelint-disable-line */
     display: none;
   }
 }
+.button{
+  margin: 10px 500px; 
+
+  button:nth-child(1){
+    font-weight: 1000;
+    font-size: 1em; 
+    background-color: colors(lighter-grey); 
+    border-radius: 8px; 
+    padding: 10px 10px; 
+    margin: 50px 20px; 
+    transition: background-color 0.3s ease-in-out;
+
+      &:hover{
+        background-color: colors(light-grey);
+    }
+    
+  }
+  button:nth-child(2){
+    font-weight: 1000;
+    font-size: 1em; 
+    background-color: colors(lighter-grey);
+    border-radius: 8px; 
+    padding: 10px 10px; 
+    margin: 50px 20px; 
+    transition: background-color 0.3s ease-in-out;
+
+      &:hover{
+        background-color: colors(light-grey);
+    }
+  }
+  button:nth-child(3){
+    font-weight: 1000;
+    font-size: 1em; 
+    background-color: colors(lighter-grey);
+    border-radius: 8px; 
+    padding: 10px 10px; 
+    margin: 50px 20px; 
+    transition: background-color 0.3s ease-in-out;
+
+      &:hover{
+        background-color: colors(light-grey);
+    }
+  }
+}
