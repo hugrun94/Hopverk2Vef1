@@ -40,6 +40,31 @@ export function loadIndex(data, page) {
     element.classList.add('lectures__section');
     lectures.appendChild(element);
   }
+  //Búa til button fyrir HTML
+  var button1 = document.createElement("button");
+  button1.innerHTML = "HTML";
+
+  // Skeyta einhvert
+  var buttonh = document.getElementsByClassName("button__HTML")[0];
+  buttonh.appendChild(button1);
+
+  //Bæta við event handler
+  button1.addEventListener("HTML", function() {
+    alert("Velja HTML");
+  });
+
+  //Búa til button fyrir CSS
+  var button2 = document.createElement("button");
+  button2.innerHTML = "CSS";
+
+  // Skeyta einhvert
+  var buttonc = document.getElementsByClassName("button__CSS")[0];
+  buttonc.appendChild(button2);
+
+  //Bæta við event handler
+  button2.addEventListener("CSS", function() {
+    alert("Velja CSS");
+  
 }
 
 export function loadLecture(data) {
