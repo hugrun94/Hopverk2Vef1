@@ -19,8 +19,6 @@ export function loadData(isLecturePage, page) {
       	console.log(data)
         loadLecture(data, page);
       } else {
-      	      	console.log(data)
-
         loadIndex(data, page);
       }
     })
