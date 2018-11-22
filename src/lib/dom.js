@@ -8,11 +8,12 @@ export function loadIndex(data, page) {
     const lectures = page.querySelector('.lectures');
     console.log(data)
 
+    var buttondiv = document.createElement("div");
     //Búa til button fyrir HTML
     var button1 = document.createElement("button");
     var texti1 = document.createTextNode("HTML");
     button1.appendChild(texti1);
-    document.body.appendChild(button1)
+    buttondiv.appendChild(button1)
 
     //Bæta við event handler
     button1.addEventListener("HTML", function() {
@@ -23,7 +24,7 @@ export function loadIndex(data, page) {
   var button2 = document.createElement("button");
   var texti2 = document.createTextNode("CSS");
   button2.appendChild(texti2);
-  document.body.appendChild(button2);
+  buttondiv.appendChild(button2);
 
   //Bæta við event handler
   button2.addEventListener("CSS", function() {
@@ -34,12 +35,14 @@ export function loadIndex(data, page) {
   var button3 = document.createElement("button");
   var texti3 = document.createTextNode("JAVASCRIPT");
   button3.appendChild(texti3);
-  document.body.appendChild(button3);
+  buttondiv.appendChild(button3);
 
   //Bæta við event handler
   button3.addEventListener("JAVASCRIPT", function() {
     alert("Velja JAVASCRIPT");
   });
+  buttondiv.setAttribute('class', 'button')
+  document.body.appendChild(buttondiv);
 
   for (const i in data.lectures) {
     let lecture = data.lectures[i];
