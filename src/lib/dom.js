@@ -10,6 +10,42 @@ export function loadIndex(data, page) {
     console.log(lectures)
     console.log(data)
 
+    var buttondiv = document.createElement("div");
+    //Búa til button fyrir HTML
+    var button1 = document.createElement("button");
+    var texti1 = document.createTextNode("HTML");
+    button1.appendChild(texti1);
+    buttondiv.appendChild(button1)
+
+    //Bæta við event handler
+    button1.addEventListener("HTML", function() {
+    alert("Velja HTML");
+  });
+
+  //Búa til button fyrir CSS
+  var button2 = document.createElement("button");
+  var texti2 = document.createTextNode("CSS");
+  button2.appendChild(texti2);
+  buttondiv.appendChild(button2);
+
+  //Bæta við event handler
+  button2.addEventListener("CSS", function() {
+    alert("Velja CSS"); 
+});
+
+  //Búa til button fyrir Javascript
+  var button3 = document.createElement("button");
+  var texti3 = document.createTextNode("JAVASCRIPT");
+  button3.appendChild(texti3);
+  buttondiv.appendChild(button3);
+
+  //Bæta við event handler
+  button3.addEventListener("JAVASCRIPT", function() {
+    alert("Velja JAVASCRIPT");
+  });
+  buttondiv.setAttribute('class', 'button');
+  document.body.appendChild(buttondiv);
+
   for (const i in data.lectures) {
     let lecture = data.lectures[i];
 
@@ -50,6 +86,7 @@ export function loadIndex(data, page) {
 
 
   }
+
 }
 
 export function loadLecture(data, page) {
@@ -106,8 +143,5 @@ export function loadLecture(data, page) {
 
 
 }
-
-
-
 
 

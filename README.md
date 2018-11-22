@@ -15,6 +15,42 @@ Committing and pushing after making some changes:
 
 To merge with master go to github.com/hugrun94/Hopverk2Vef1 and create a pull request.
 
+# Hópverkefni 2
+##### Björgvin Hall, Emma Líf Jónsdóttir og Hugrún Guðmundsdóttir 
+bjh45@hi.is
+elj44@hi.is
+hug17@hi.is
+
+Hvernig skal setja upp verkefnið:
+`git clone https://github.com/hugrun94/Hopverk2Vef1`
+`cd Hopverk2Vef1`
+`npm install`
+
+Til að vinna í verkefninu:
+Opnum browser-sync með `npm run browser-sync`
+Keyrum sass watch með `npm run sass-watch`
+
+
+Verkefnið er með eftirfarandi skjölum
+-README.md skjal sem gefur til kynna upplýsingar um verkefnið
+- index.html sem er heimasíða síðunnar
+- gird.css sem gefur grind fyrir síðuna
+- rollup.confic.js er notað til að tengja saman??
+- package.json og package-lock.json fyrir npm pakka
+- src (mappa): Með allar js og scss skrár í fleirum möppum
+    - lib (mappa): inniheldur js skrár sem er notaðar til að halda utanum mismunandi kóða
+        -  dom.js
+        -  helper.js
+        -  list.js
+    - styles(mappa): Sem inniheldur allar scss skrár
+        - confic.scss
+        - fyrirlestur.scss
+        - styles.scss
+    - index.js
+- Img(mappa): Allar myndir sem notaðar eru í verkefninu
+- utlit(mappa): Myndir af síðu sem stílað var eftir 
+
+
 
 
 
