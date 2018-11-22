@@ -41,7 +41,7 @@ export function loadIndex(data, page) {
   button3.addEventListener("JAVASCRIPT", function() {
     alert("Velja JAVASCRIPT");
   });
-  buttondiv.setAttribute('class', 'button')
+  buttondiv.setAttribute('class', 'button');
   document.body.appendChild(buttondiv);
 
   for (const i in data.lectures) {
