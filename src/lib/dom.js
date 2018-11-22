@@ -8,6 +8,39 @@ export function loadIndex(data, page) {
     const lectures = page.querySelector('.lectures');
     console.log(data)
 
+    //Búa til button fyrir HTML
+    var button1 = document.createElement("button");
+    var texti1 = document.createTextNode("HTML");
+    button1.appendChild(texti1);
+    document.body.appendChild(button1)
+
+    //Bæta við event handler
+    button1.addEventListener("HTML", function() {
+    alert("Velja HTML");
+  });
+
+  //Búa til button fyrir CSS
+  var button2 = document.createElement("button");
+  var texti2 = document.createTextNode("CSS");
+  button2.appendChild(texti2);
+  document.body.appendChild(button2);
+
+  //Bæta við event handler
+  button2.addEventListener("CSS", function() {
+    alert("Velja CSS"); 
+});
+
+  //Búa til button fyrir Javascript
+  var button3 = document.createElement("button");
+  var texti3 = document.createTextNode("JAVASCRIPT");
+  button3.appendChild(texti3);
+  document.body.appendChild(button3);
+
+  //Bæta við event handler
+  button3.addEventListener("JAVASCRIPT", function() {
+    alert("Velja JAVASCRIPT");
+  });
+
   for (const i in data.lectures) {
     let lecture = data.lectures[i];
 
@@ -40,6 +73,7 @@ export function loadIndex(data, page) {
     element.classList.add('lectures__section');
     lectures.appendChild(element);
   }
+
 }
 
 export function loadLecture(data) {
