@@ -141,7 +141,7 @@ export function loadLecture(data, page) {
             lecturepage.appendChild(code);
         } 
     }
-
+    
     //Búa til div fyrir button
     var finished = document.createElement("div");
 
@@ -151,7 +151,8 @@ export function loadLecture(data, page) {
     button.appendChild(text);
     finished.appendChild(button)
 
-        //Bæta við event handler
+
+    //Bæta við event handler
       button.addEventListener("Finished", function() {
       alert("Búinn með þennan fyrirlestur");
     });
@@ -184,7 +185,5 @@ function isClicked(data, page, tegund){
         } else {
          x[j].classList.add('hidden')
         }
-
-      } 
-
-
+      }
+    } 
