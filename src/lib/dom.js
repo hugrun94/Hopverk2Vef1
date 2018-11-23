@@ -150,10 +150,8 @@ export function loadLecture(data, page) {
     var text = document.createTextNode("Klára Fyrirlestur");
     button.appendChild(text);
     finished.appendChild(button)
-}
 
-
-    //Bæta við event handler
+        //Bæta við event handler
       button.addEventListener("Finished", function() {
       alert("Búinn með þennan fyrirlestur");
     });
@@ -172,6 +170,9 @@ export function loadLecture(data, page) {
     alert("Til Baka");
     });
 }
+
+
+
 function isClicked(data, page, tegund){
   let x = document.getElementsByClassName(tegund);
   console.log(x)
