@@ -28,6 +28,16 @@ html { /* stylelint-disable-line */
   font-size: 16px;
 }
 
+body{
+  display: flex;
+  flex-direction: column;
+  flex-flow: column-reverse;
+}
+
+.header{
+  order: 1;
+}
+
 img { /* stylelint-disable-line */
   max-width: 100%;
 }
@@ -118,46 +128,25 @@ img { /* stylelint-disable-line */
   }
 }
 .button{
-  margin: 10px 500px; 
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: auto;
+  width: calc(100% - 40px);
+  max-width: 450px;
+  margin-bottom: $gutter;
 
-  button:nth-child(1){
+  button{
     font-weight: 1000;
     font-size: 1em; 
     background-color: colors(lighter-grey); 
     border-radius: 8px; 
     padding: 10px 10px; 
-    margin: 50px 20px; 
     transition: background-color 0.3s ease-in-out;
 
       &:hover{
         background-color: colors(light-grey);
     }
     
-  }
-  button:nth-child(2){
-    font-weight: 1000;
-    font-size: 1em; 
-    background-color: colors(lighter-grey);
-    border-radius: 8px; 
-    padding: 10px 10px; 
-    margin: 50px 20px; 
-    transition: background-color 0.3s ease-in-out;
-
-      &:hover{
-        background-color: colors(light-grey);
-    }
-  }
-  button:nth-child(3){
-    font-weight: 1000;
-    font-size: 1em; 
-    background-color: colors(lighter-grey);
-    border-radius: 8px; 
-    padding: 10px 10px; 
-    margin: 50px 20px; 
-    transition: background-color 0.3s ease-in-out;
-
-      &:hover{
-        background-color: colors(light-grey);
-    }
   }
 }
