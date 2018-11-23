@@ -150,21 +150,7 @@ export function loadLecture(data, page) {
     var text = document.createTextNode("Klára Fyrirlestur");
     button.appendChild(text);
     finished.appendChild(button)
-}
 
-
-function isClicked(data, page, tegund){
-  let x = document.getElementsByClassName(tegund);
-  console.log(x)
-      for(let j = 0; j<x.length;j++){
-        console.log(x[j])
-        if (x[j].classList === 'hidden') {
-          x[j].classList.remove('hidden');
-        } else {
-         x[j].classList.add('hidden')
-        }
-
-      } 
 
     //Bæta við event handler
       button.addEventListener("Finished", function() {
@@ -185,17 +171,19 @@ function isClicked(data, page, tegund){
     alert("Til Baka");
     });
 }
+
+
+
 function isClicked(data, page, tegund){
   let x = document.getElementsByClassName(tegund);
   console.log(x)
       for(let j = 0; j<x.length;j++){
         console.log(x[j])
-        if (x[j].classList === 'hidden') {
+        if (x[j].classList === tegund + ' hidden') {
           x[j].classList.remove('hidden');
+          x[j].classList.add(tegund)
         } else {
          x[j].classList.add('hidden')
         }
-
-      } 
-
-
+      }
+    } 
