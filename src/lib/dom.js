@@ -141,9 +141,37 @@ export function loadLecture(data, page) {
             lecturepage.appendChild(code);
         } 
     }
+
+    //Búa til div fyrir button
+    var finished = document.createElement("div");
+
+    //Búa til button fyrir þegar maður hefur klárað fyrirlestur
+    var button = document.createElement("button");
+    var text = document.createTextNode("Klára Fyrirlestur");
+    button.appendChild(text);
+    finished.appendChild(button)
 }
 
 
+    //Bæta við event handler
+      button.addEventListener("Finished", function() {
+      alert("Búinn með þennan fyrirlestur");
+    });
+
+    //Búa til div fyrir button
+    var back = document.createElement("div");
+
+    //Búa til button fyrir þegar maður hefur klárað fyrirlestur
+    var tilbaka = document.createElement("button");
+    var texti = document.createTextNode("Til Baka");
+    tilbaka.appendChild(texti);
+    back.appendChild(tilbaka)
+    
+    //Bæta við event handler
+    tilbaka.addEventListener("Back", function() {
+    alert("Til Baka");
+    });
+}
 function isClicked(data, page, tegund){
   let x = document.getElementsByClassName(tegund);
   console.log(x)
@@ -157,7 +185,5 @@ function isClicked(data, page, tegund){
         }
 
       } 
-
-}
 
 
