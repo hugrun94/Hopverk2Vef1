@@ -185,5 +185,17 @@ function isClicked(data, page, tegund){
     alert("Til Baka");
     });
 }
+function isClicked(data, page, tegund){
+  let x = document.getElementsByClassName(tegund);
+  console.log(x)
+      for(let j = 0; j<x.length;j++){
+        console.log(x[j])
+        if (x[j].classList === 'hidden') {
+          x[j].classList.remove('hidden');
+        } else {
+         x[j].classList.add('hidden')
+        }
+
+      } 
 
 
