@@ -4,50 +4,50 @@ import {
 
 
 export function loadIndex(data, page) {
+  console.log(data.lectures)
+  // finna út hvað er valið efst
+  const lectures = page.querySelector('.lectures');
 
-    // finna út hvað er valið efst
-    const lectures = page.querySelector('.lectures');
-    console.log(lectures)
-    console.log(data)
+  const buttondiv = el('div')
+  //Búa til button fyrir HTML
+  const button1 = el('button')
+  const texti1 = document.createTextNode("HTML");
+  button1.appendChild(texti1);
 
-    var buttondiv = document.createElement("div");
-    //Búa til button fyrir HTML
-    var button1 = document.createElement("button");
-    var texti1 = document.createTextNode("HTML");
-    button1.appendChild(texti1);
-    buttondiv.appendChild(button1)
-
-    //Bæta við event handler
-    button1.addEventListener("HTML", function() {
-    alert("Velja HTML");
+  //Bæta við event handler
+  button1.addEventListener("click", () => {
+    isClicked(data,page,'html');
   });
 
   //Búa til button fyrir CSS
-  var button2 = document.createElement("button");
-  var texti2 = document.createTextNode("CSS");
+  const button2 = el('button')
+  const texti2 = document.createTextNode("CSS");
   button2.appendChild(texti2);
-  buttondiv.appendChild(button2);
 
   //Bæta við event handler
-  button2.addEventListener("CSS", function() {
-    alert("Velja CSS"); 
-});
+  button2.addEventListener("click", () => {
+    isClicked(data,page,'css');
+  });
 
   //Búa til button fyrir Javascript
-  var button3 = document.createElement("button");
-  var texti3 = document.createTextNode("JAVASCRIPT");
+  const button3 = el('button')
+  const texti3 = document.createTextNode("JAVASCRIPT");
   button3.appendChild(texti3);
-  buttondiv.appendChild(button3);
 
   //Bæta við event handler
-  button3.addEventListener("JAVASCRIPT", function() {
-    alert("Velja JAVASCRIPT");
+   button3.addEventListener("click", () => {
+    isClicked(data,page,'javascript');
   });
+
+  buttondiv.appendChild(button1)
+  buttondiv.appendChild(button2);
+  buttondiv.appendChild(button3);
   buttondiv.setAttribute('class', 'button');
-  document.body.appendChild(buttondiv);
+  lectures.appendChild(buttondiv);
 
   for (const i in data.lectures) {
     let lecture = data.lectures[i];
+
 
     const sl = lecture.slug;
     const link = el('a');
@@ -78,7 +78,8 @@ export function loadIndex(data, page) {
     wrap.classList.add('lectures__titlewrap');
 
     element.appendChild(wrap);
-    element.classList.add('lectures__section');
+    console.log();
+    element.classList.add(''+ data.lectures[i].category);
     link.appendChild(element);
     lectures.appendChild(link);
 
@@ -140,6 +141,7 @@ export function loadLecture(data, page) {
             lecturepage.appendChild(code);
         } 
     }
+    
     //Búa til div fyrir button
     var finished = document.createElement("div");
 
@@ -148,6 +150,21 @@ export function loadLecture(data, page) {
     var text = document.createTextNode("Klára Fyrirlestur");
     button.appendChild(text);
     finished.appendChild(button)
+}
+
+
+function isClicked(data, page, tegund){
+  let x = document.getElementsByClassName(tegund);
+  console.log(x)
+      for(let j = 0; j<x.length;j++){
+        console.log(x[j])
+        if (x[j].classList === 'hidden') {
+          x[j].classList.remove('hidden');
+        } else {
+         x[j].classList.add('hidden')
+        }
+
+      } 
 
     //Bæta við event handler
       button.addEventListener("Finished", function() {
