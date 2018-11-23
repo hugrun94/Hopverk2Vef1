@@ -149,8 +149,9 @@ function isClicked(data, page, tegund){
   console.log(x)
       for(let j = 0; j<x.length;j++){
         console.log(x[j])
-        if (x[j].classList === 'hidden') {
+        if (x[j].classList === tegund + ' hidden') {
           x[j].classList.remove('hidden');
+          x[j].classList.add(tegund)
         } else {
          x[j].classList.add('hidden')
         }
