@@ -110,8 +110,10 @@ export function loadLecture(data, page) {
       text.classList.add('lecture__text');
       lecturepage.appendChild(text);
     }else if(lec[i].type === 'quote'){
-      const quote = el('div', el('p', lec[i].data));
+      const quote = el('blockquote', el('p', lec[i].data));
+      const footer = el('footer', lec[i].attribute);
       quote.classList.add('lecture__quote');
+      quote.appendChild(footer);
       lecturepage.appendChild(quote);
     }else if(lec[i].type === 'image'){
       const imag = el('img', '');
