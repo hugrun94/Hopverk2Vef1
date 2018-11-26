@@ -72,9 +72,11 @@ img { /* stylelint-disable-line */
       font-family: fonts(roboto), serif; 
     }
 
-    &__quote p{
+    &__quote{
+      width: calc(100% + 44px);
       background-color: colors(lighter-grey);
-      padding: 40px 10px; 
+      margin: 0px -20px 0px -22px; 
+      padding: 20px;
     }
 
     &__image {
