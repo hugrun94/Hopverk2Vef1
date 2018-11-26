@@ -87,8 +87,7 @@ img { /* stylelint-disable-line */
     &__code{
       font-family: fonts(roboto); 
     }
-  }
-  .button__both{
+    &__both{
     display: flex; 
     justify-content: center;
     align-items: flex-end; 
@@ -101,7 +100,7 @@ img { /* stylelint-disable-line */
       background-color: transparent; 
       padding: 10px 10px; 
       border-style: none; 
-
+    }
     }
   }
   .button__finish{
