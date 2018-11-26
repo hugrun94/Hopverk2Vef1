@@ -89,11 +89,23 @@ img { /* stylelint-disable-line */
     }
   }
   .button__both{
-    //display: flex; 
-    justify-content: space-between;
+    display: flex; 
+    justify-content: center;
+    align-items: flex-end; 
     flex-wrap: wrap; 
     margin: auto; 
-    //width: calc(100% - 40px);
-    //max-width: 450px;
+    width: calc(100% - 40px);
+    max-width: 450px;
+
+    button{
+      background-color: transparent; 
+      padding: 10px 10px; 
+      border-style: none; 
+
+    }
+  }
+  .button__finish{
+      background: url("../../img/check.jpg") no-repeat left; 
+    
   }
 }
