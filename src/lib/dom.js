@@ -34,7 +34,7 @@ export function loadIndex(data, page) {
   button3.appendChild(texti3);
 
   //Bæta við event handler
-   button3.addEventListener("click", () => {
+  button3.addEventListener("click", () => {
     isClicked(data,page,'javascript');
   });
 
@@ -54,10 +54,10 @@ export function loadIndex(data, page) {
     const element = el('section');
 
     if (lecture.thumbnail) {
-        const img = el('img');
-        img.classList.add('lectures__img');
-        img.setAttribute('src', lecture.thumbnail);
-        element.appendChild(img);
+      const img = el('img');
+      img.classList.add('lectures__img');
+      img.setAttribute('src', lecture.thumbnail);
+      element.appendChild(img);
     }
 
     const cat = el('h2', lecture.category);
@@ -85,111 +85,105 @@ export function loadIndex(data, page) {
 }
 
 export function loadLecture(data, page) {
-    const lecturepage = page.querySelector('.lecture');
+  const lecturepage = page.querySelector('.lecture');
 
-    const url = new URL(window.location.href);
-    const slug = url.searchParams.get('slug');
-   
-    let lecture;
-    for(let i in data.lectures){
-        if(data.lectures[i].slug === slug){
-            lecture = data.lectures[i];
-        }
+  const url = new URL(window.location.href);
+  const slug = url.searchParams.get('slug');
+
+  let lecture;
+  for(let i in data.lectures){
+    if(data.lectures[i].slug === slug){
+      lecture = data.lectures[i];
     }
-    const lec = lecture.content;
-    for(let i in lec){
-        if(lec[i].type === 'youtube'){
-            const youtube = el('p',el('a',lec[i].data));
-            youtube.classList.add('lecture__youtube');
-            lecturepage.appendChild(youtube);
-        }else if(lec[i].type === 'text'){
-            const text = el('p', lec[i].data);
-            text.classList.add('lecture__text');
-            lecturepage.appendChild(text);
-        }else if(lec[i].type === 'quote'){
-            const quote = el('div', el('p', lec[i].data));
-            quote.classList.add('lecture__quote');
-            lecturepage.appendChild(quote);
-        }else if(lec[i].type === 'image'){
-            const imag = el('img', lec[i].data);
-            imag.classList.add('lecture__image');
-            lecturepage.appendChild(imag);
-        }else if(lec[i].type === 'heading'){
-            const head = el('h1', lec[i].data);
-            head.classList.add('lecture__heading');
-            lecturepage.appendChild(head);
-        }else if(lec[i].type === 'list'){
-            const ul = el('ul')
-            ul.classList.add('lecture__ul');
-            for(let j in lec[j]){
-                const li = el('li', lec[j].data);
-                li.classList.add('lecture__li');
-                lecturepage.appendChild(li);
-            }
-        }else if(lec[i].type === 'code'){
-            const code = el('code', lec[i].data);
-            code.classList.add('lecture__code');
-            lecturepage.appendChild(code);
-        } 
-    }
-    const backdiv = el('div')
+  }
+  const lec = lecture.content;
+  for(let i in lec){
+    if(lec[i].type === 'youtube'){
+      const youtube = el('p',el('a',lec[i].data));
+      youtube.classList.add('lecture__youtube');
+      lecturepage.appendChild(youtube);
+    }else if(lec[i].type === 'text'){
+      const text = el('p', lec[i].data);
+      text.classList.add('lecture__text');
+      lecturepage.appendChild(text);
+    }else if(lec[i].type === 'quote'){
+      const quote = el('div', el('p', lec[i].data));
+      quote.classList.add('lecture__quote');
+      lecturepage.appendChild(quote);
+    }else if(lec[i].type === 'image'){
+      const imag = el('img', lec[i].data);
+      imag.classList.add('lecture__image');
+      lecturepage.appendChild(imag);
+    }else if(lec[i].type === 'heading'){
+      const head = el('h1', lec[i].data);
+      head.classList.add('lecture__heading');
+      lecturepage.appendChild(head);
+    }else if(lec[i].type === 'list'){
+      const ul = el('ul')
+      ul.classList.add('lecture__ul');
+      for(let j in lec[j]){
+        const li = el('li', lec[j].data);
+        li.classList.add('lecture__li');
+        lecturepage.appendChild(li);
+      }
+    }else if(lec[i].type === 'code'){
+      const code = el('code', lec[i].data);
+      code.classList.add('lecture__code');
+      lecturepage.appendChild(code);
+    } 
+  }
+  const backdiv = el('div');
     //Búa til button fyrir að fara til baka
     const back = el('button')
     const textback = document.createTextNode("Til Baka");
     back.appendChild(textback);
-
     //Bæta við event handler
-     back.addEventListener("click", () => {
-    isClicked(data,page,'til baka');
-});
+    back.addEventListener("click", () => {
+      isClicked(data,page,'til baka');
+    });
+
   const finishdiv = el('div')
   //Búa til button fyrir að merkja við kláraðan fyrirlestur
   const finished = el('button')
   const textfinish = document.createTextNode("Kláraður fyrirlestur");
   finished.appendChild(textfinish);
-
   //Bæta við event handler
-   finished.addEventListener("click", () => {
+  finished.addEventListener("click", () => {
     isClicked(data,page,'Klárað');
-   });
+  });
 
-   backdiv.appendChild(back);
-   finishdiv.appendChild(finished);
-   backdiv.setAttribute('class', 'button__back');
-   lecture-page.appendChild(backdiv);
-   finishdiv.setAttribute('class', 'button__finish');
-   lecture-page.appendChild(finishdiv);
-   console.log(lecture);
+  backdiv.appendChild(back);
+  finishdiv.appendChild(finished);
+
+
    //Búa til div til að halda utanum báða takkana 
    const bothbuttons = el('div')
    bothbuttons.appendChild(backdiv);
    bothbuttons.appendChild(finishdiv);
-   bothbuttons.setAttribute('class', 'button__both');
-   lecture-page.appendChild(bothbuttons);
-   let x = document.getElementsByClassName(lecture);
-   console.log(x);
-  
+   lecturepage.appendChild(bothbuttons)
+
+
 
    //Setja button undir lecture
    
 
-  }
+ }
 
-function isClicked(data, page, tegund){
+ function isClicked(data, page, tegund){
   let element = document.getElementsByClassName(tegund);
-    for(let j = 0; j<element.length;j++){
-      console.log(element[j].classList.value)
-      if (element[j].classList) { 
-          element[j].classList.toggle("hidden");
-      } else {
-          let classes = element[j].className.split(" ");
-          let i = classes.indexOf("hidden");
+  for(let j = 0; j<element.length;j++){
+    console.log(element[j].classList.value)
+    if (element[j].classList) { 
+      element[j].classList.toggle("hidden");
+    } else {
+      let classes = element[j].className.split(" ");
+      let i = classes.indexOf("hidden");
 
-          if (i >= 0) 
-              classes.splice(i, 1);
-          else 
-              classes.push("mystyle");
-              element.className = classes.join(" "); 
-            }
-          }
-        } 
+      if (i >= 0) 
+        classes.splice(i, 1);
+      else 
+        classes.push("mystyle");
+      element.className = classes.join(" "); 
+    }
+  }
+} 
