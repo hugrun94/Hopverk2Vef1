@@ -4,7 +4,6 @@ import {
 
 
 export function loadIndex(data, page) {
-  console.log(data.lectures)
   // finna út hvað er valið efst
   const lectures = page.querySelector('.lectures');
 
@@ -78,27 +77,20 @@ export function loadIndex(data, page) {
     wrap.classList.add('lectures__titlewrap');
 
     element.appendChild(wrap);
-    console.log();
     element.classList.add(''+ data.lectures[i].category);
     link.appendChild(element);
     lectures.appendChild(link);
-
-    console.log(element)
-
-
   }
 
 }
 
 export function loadLecture(data, page) {
     const lecturepage = page.querySelector('.lecture');
-    console.log(lecturepage)
 
     const url = new URL(window.location.href);
     const slug = url.searchParams.get('slug');
    
     let lecture;
-    console.log(data.lectures[0].slug)
     for(let i in data.lectures){
         if(data.lectures[i].slug === slug){
             lecture = data.lectures[i];
@@ -106,7 +98,6 @@ export function loadLecture(data, page) {
     }
     const lec = lecture.content;
     for(let i in lec){
-        console.log(lec[i].type)
         if(lec[i].type === 'youtube'){
             const youtube = el('p',el('a',lec[i].data));
             youtube.classList.add('lecture__youtube');
@@ -185,15 +176,20 @@ export function loadLecture(data, page) {
   }
 
 function isClicked(data, page, tegund){
-  let x = document.getElementsByClassName(tegund);
-  console.log(x)
-      for(let j = 0; j<x.length;j++){
-        console.log(x[j])
-        if (x[j].classList === tegund + ' hidden') {
-          x[j].classList.remove('hidden');
-          x[j].classList.add(tegund)
-        } else {
-         x[j].classList.add('hidden')
-        }
-      }
-    } 
+  let element = document.getElementsByClassName(tegund);
+    for(let j = 0; j<element.length;j++){
+      console.log(element[j].classList.value)
+      if (element[j].classList) { 
+          element[j].classList.toggle("hidden");
+      } else {
+          let classes = element[j].className.split(" ");
+          let i = classes.indexOf("hidden");
+
+          if (i >= 0) 
+              classes.splice(i, 1);
+          else 
+              classes.push("mystyle");
+              element.className = classes.join(" "); 
+            }
+          }
+        } 
