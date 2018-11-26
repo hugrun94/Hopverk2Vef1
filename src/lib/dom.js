@@ -111,8 +111,10 @@ export function loadLecture(data, page) {
       quote.classList.add('lecture__quote');
       lecturepage.appendChild(quote);
     }else if(lec[i].type === 'image'){
-      const imag = el('img', lec[i].data);
+      const imag = el('img', '');
       imag.classList.add('lecture__image');
+      imag.setAttribute('src', lec[i].data)
+      imag.setAttribute('alt', lec[i].caption)
       lecturepage.appendChild(imag);
     }else if(lec[i].type === 'heading'){
       const head = el('h1', lec[i].data);
