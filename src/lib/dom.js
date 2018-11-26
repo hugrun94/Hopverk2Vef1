@@ -42,7 +42,7 @@ export function loadIndex(data, page) {
   buttondiv.appendChild(button2);
   buttondiv.appendChild(button3);
   buttondiv.setAttribute('class', 'button');
-  lectures.appendChild(buttondiv);
+  document.body.appendChild(buttondiv);
 
   for (const i in data.lectures) {
     let lecture = data.lectures[i];
@@ -99,7 +99,10 @@ export function loadLecture(data, page) {
   const lec = lecture.content;
   for(let i in lec){
     if(lec[i].type === 'youtube'){
-      const youtube = el('p',el('a',lec[i].data));
+      const youtube = el('iframe','');
+      youtube.setAttribute('src',lec[i].data)
+      youtube.setAttribute('width','100%');
+      youtube.setAttribute('height','420px');
       youtube.classList.add('lecture__youtube');
       lecturepage.appendChild(youtube);
     }else if(lec[i].type === 'text'){
