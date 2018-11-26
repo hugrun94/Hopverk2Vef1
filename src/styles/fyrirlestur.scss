@@ -88,4 +88,12 @@ img { /* stylelint-disable-line */
       font-family: fonts(roboto); 
     }
   }
+  .button__both{
+    //display: flex; 
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    margin: auto; 
+    //width: calc(100% - 40px);
+    //max-width: 450px;
+  }
 }
