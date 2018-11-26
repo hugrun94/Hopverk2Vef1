@@ -39,7 +39,7 @@ export function loadIndex(data, page) {
     isClicked(data,page,'javascript');
   });
 
-  buttondiv.appendChild(button1)
+  buttondiv.appendChild(button1);
   buttondiv.appendChild(button2);
   buttondiv.appendChild(button3);
   buttondiv.setAttribute('class', 'button');
@@ -141,38 +141,48 @@ export function loadLecture(data, page) {
             lecturepage.appendChild(code);
         } 
     }
-    
-    //Búa til div fyrir button
-    var finished = document.createElement("div");
-
-    //Búa til button fyrir þegar maður hefur klárað fyrirlestur
-    var button = document.createElement("button");
-    var text = document.createTextNode("Klára Fyrirlestur");
-    button.appendChild(text);
-    finished.appendChild(button)
-
+    const backdiv = el('div')
+    //Búa til button fyrir að fara til baka
+    const back = el('button')
+    const textback = document.createTextNode("Til Baka");
+    back.appendChild(textback);
 
     //Bæta við event handler
-      button.addEventListener("Finished", function() {
-      alert("Búinn með þennan fyrirlestur");
-    });
+     back.addEventListener("click", () => {
+    isClicked(data,page,'til baka');
+});
+  const finishdiv = el('div')
+  //Búa til button fyrir að merkja við kláraðan fyrirlestur
+  const finished = el('button')
+  const textfinish = document.createTextNode("Kláraður fyrirlestur");
+  finished.appendChild(textfinish);
 
-    //Búa til div fyrir button
-    var back = document.createElement("div");
+  //Bæta við event handler
+   finished.addEventListener("click", () => {
+    isClicked(data,page,'Klárað');
+   });
 
-    //Búa til button fyrir þegar maður hefur klárað fyrirlestur
-    var tilbaka = document.createElement("button");
-    var texti = document.createTextNode("Til Baka");
-    tilbaka.appendChild(texti);
-    back.appendChild(tilbaka)
-    
-    //Bæta við event handler
-    tilbaka.addEventListener("Back", function() {
-    alert("Til Baka");
-    });
-}
+   backdiv.appendChild(back);
+   finishdiv.appendChild(finished);
+   backdiv.setAttribute('class', 'button__back');
+   lecture-page.appendChild(backdiv);
+   finishdiv.setAttribute('class', 'button__finish');
+   lecture-page.appendChild(finishdiv);
+   console.log(lecture);
+   //Búa til div til að halda utanum báða takkana 
+   const bothbuttons = el('div')
+   bothbuttons.appendChild(backdiv);
+   bothbuttons.appendChild(finishdiv);
+   bothbuttons.setAttribute('class', 'button__both');
+   lecture-page.appendChild(bothbuttons);
+   let x = document.getElementsByClassName(lecture);
+   console.log(x);
+  
 
+   //Setja button undir lecture
+   
 
+  }
 
 function isClicked(data, page, tegund){
   let x = document.getElementsByClassName(tegund);
