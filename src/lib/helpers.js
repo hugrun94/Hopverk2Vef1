@@ -1,4 +1,4 @@
-import { loadLecture, loadIndex} from './dom';
+import { loadIndex, loadLecture, loadindexheader, loadlectureheader} from './dom';
 
 export function empty(element) {
   while (element.firstChild) {
@@ -16,11 +16,11 @@ export function loadData(isLecturePage, page) {
     })
     .then((data) => {
       if(isLecturePage) {
-      	console.log(data)
+        console.log("Halló")
+        loadlectureheader(data, page);
         loadLecture(data, page);
       } else {
-      	      	console.log(data)
-
+        loadindexheader(data, page);
         loadIndex(data, page);
       }
     })
