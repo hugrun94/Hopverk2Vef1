@@ -99,23 +99,23 @@ export function loadlectureheader(data, page){
 
   const header__image= el('div');
   const codeimg = lecture.image;
-  const headimg = el('img', codeimg);
-  header__image.classList.add('lectureheader__img');
+  const headimg = el('img');
   headimg.setAttribute('src', lecture.image);
+  headimg.setAttribute('class', 'lectureheader__img');
+  header__image.setAttribute('class', 'lectureheader__image');
   header__image.appendChild(headimg);
   header.appendChild(header__image);
 
-
+  const header__content = el('div');
   const head = lecture.title;
   const title = el('h1', head);
-  title.classList.add('lectureheader__content');
-  header.appendChild(title);
-
   const type = lecture.category;
   const cat = el('h3', type);
-  cat.classList.add('lectureheader__content');
-  header.appendChild(cat);
+  header__content.appendChild(cat);
+  header__content.appendChild(title);
 
+  header__content.classList.add('lectureheader__content');
+  header.appendChild(header__content);
 }
 export function loadindexheader(data, page){
   const header = page.querySelector('.indexheader');
@@ -132,8 +132,10 @@ export function loadindexheader(data, page){
   }
  const indexhead = el('div');
  const indeximg = el('img');
-  indexhead.classList.add('indexheader__img');
+  indexhead.classList.add('indexheader__image');
+  indeximg.setAttribute('class', 'indexheader__img');
   indeximg.setAttribute('src', 'img/header.jpg');
+  indeximg.setAttribute('alt', ' ');
   indexhead.appendChild(indeximg);
   header.appendChild(indexhead); 
 
@@ -179,9 +181,16 @@ export function loadLecture(data, page) {
       youtube.classList.add('lecture__youtube');
       lecturepage.appendChild(youtube);
     }else if(lec[i].type === 'text'){
-      const text = el('p', lec[i].data);
-      text.classList.add('lecture__text');
-      lecturepage.appendChild(text);
+      const substrings = lec[i].data.split(/\r?\n/);
+      for(let k in substrings){
+        const text = el('p', substrings[k]);
+        text.classList.add('lecture__text');
+        lecturepage.appendChild(text);
+      }
+
+      // const text = el('p', lec[i].data);
+      // text.classList.add('lecture__text');
+      // lecturepage.appendChild(text);
     }else if(lec[i].type === 'quote'){
       const quote = el('blockquote', el('p', lec[i].data));
       const footer = el('footer', lec[i].attribute);
@@ -189,11 +198,17 @@ export function loadLecture(data, page) {
       quote.appendChild(footer);
       lecturepage.appendChild(quote);
     }else if(lec[i].type === 'image'){
-      const imag = el('img', '');
-      imag.classList.add('lecture__image');
-      imag.setAttribute('src', lec[i].data)
-      imag.setAttribute('alt', lec[i].caption)
-      lecturepage.appendChild(imag);
+      const image = el('div');
+      image.setAttribute('class', 'lecture__image')
+      const img = el('img', '');
+      img.classList.add('lecture__img');
+      const imgcaption = el('footer', lec[i].caption)
+      img.setAttribute('src', lec[i].data)
+      img.setAttribute('alt', ' ')
+      image.appendChild(img);
+      image.appendChild(imgcaption);
+      lecturepage.appendChild(image);
+
     }else if(lec[i].type === 'heading'){
       const head = el('h1', lec[i].data);
       head.classList.add('lecture__heading');
