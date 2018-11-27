@@ -45,7 +45,7 @@ img { /* stylelint-disable-line */
     &__content{
       position: absolute;
       top: 120px;
-      left: calc(50% - 80px);
+      left: calc(50% - 150px);
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -66,6 +66,7 @@ img { /* stylelint-disable-line */
     
     p{
       margin: 1.5em 0em; 
+      white-space: pre-line;
     }
 
     &__heading{
