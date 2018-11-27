@@ -25,15 +25,18 @@ html { /* stylelint-disable-line */
   //font-family: $font-main;
   font-size: 16px;
 }
+.lectureheader{
+  order: 1; 
+}
 
 img { /* stylelint-disable-line */
   max-width: 100%;
 }
 .lecture-page{
-  .header{
+  .lectureheader{
     margin-bottom: $gutter;
     &__img{
-      background: url("../../img/code.jpg") no-repeat center;
+    //  background: url("../../img/code.jpg") no-repeat center;
       opacity: 0.6;
       background-size: 100%;
       height: 300px; // Hæð á haus
@@ -89,13 +92,20 @@ img { /* stylelint-disable-line */
     &__code{
       font-family: fonts(roboto); 
     }
-  }
-  .button__both{
-    //display: flex; 
-    justify-content: space-between;
+    &__both{
+    display: flex; 
+    justify-content: center;
+    align-items: flex-end; 
     flex-wrap: wrap; 
     margin: auto; 
-    //width: calc(100% - 40px);
-    //max-width: 450px;
+    width: calc(100% - 40px);
+    max-width: 450px;
+
+    button{
+      background-color: transparent; 
+      padding: 10px 10px; 
+      border-style: none; 
+    }
+    }
   }
 }
