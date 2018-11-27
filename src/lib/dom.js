@@ -2,7 +2,7 @@ import {
   el
 } from './helpers';
 
-
+ 
 export function loadIndex(data, page) {
   // finna út hvað er valið efst
   const lectures = page.querySelector('.lectures');
