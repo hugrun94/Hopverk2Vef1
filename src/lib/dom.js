@@ -187,10 +187,6 @@ export function loadLecture(data, page) {
         text.classList.add('lecture__text');
         lecturepage.appendChild(text);
       }
-
-      // const text = el('p', lec[i].data);
-      // text.classList.add('lecture__text');
-      // lecturepage.appendChild(text);
     }else if(lec[i].type === 'quote'){
       const quote = el('blockquote', el('p', lec[i].data));
       const footer = el('footer', lec[i].attribute);
