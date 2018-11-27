@@ -42,7 +42,7 @@ export function loadIndex(data, page) {
   buttondiv.appendChild(button2);
   buttondiv.appendChild(button3);
   buttondiv.setAttribute('class', 'button');
-  lectures.appendChild(buttondiv);
+  document.body.appendChild(buttondiv);
 
   for (const i in data.lectures) {
     let lecture = data.lectures[i];
@@ -64,9 +64,9 @@ export function loadIndex(data, page) {
     cat.classList.add('lectures__category');
     element.appendChild(cat);
 
-
     const title = el('h1', lecture.title);
     title.classList.add('lectures__title');
+
 
     const check = el('img');
     check.classList.add('lectures__checkbox');
@@ -81,7 +81,79 @@ export function loadIndex(data, page) {
     link.appendChild(element);
     lectures.appendChild(link);
   }
+}
 
+export function loadlectureheader(data, page){
+  const header = page.querySelector('.lectureheader');
+
+  const url = new URL(window.location.href);
+  const slug = url.searchParams.get('slug');
+
+
+  let lecture;
+  for(let i in data.lectures){
+    if(data.lectures[i].slug === slug){
+      lecture = data.lectures[i];
+    }
+  }
+
+  const header__image= el('div');
+  const codeimg = lecture.image;
+  const headimg = el('img', codeimg);
+  header__image.classList.add('lectureheader__img');
+  headimg.setAttribute('src', lecture.image);
+  header__image.appendChild(headimg);
+  header.appendChild(header__image);
+
+
+  const head = lecture.title;
+  const title = el('h1', head);
+  title.classList.add('lectureheader__content');
+  header.appendChild(title);
+
+  const type = lecture.category;
+  const cat = el('h3', type);
+  cat.classList.add('lectureheader__content');
+  header.appendChild(cat);
+
+}
+export function loadindexheader(data, page){
+  const header = page.querySelector('.indexheader');
+
+  const url = new URL(window.location.href);
+  const slug = url.searchParams.get('slug');
+
+
+  let lecture;
+  for(let i in data.lectures){
+    if(data.lectures[i].slug === slug){
+      lecture = data.lectures[i];
+    }
+  }
+ const indexhead = el('div');
+ const indeximg = el('img');
+  indexhead.classList.add('indexheader__img');
+  indeximg.setAttribute('src', 'img/header.jpg');
+  indexhead.appendChild(indeximg);
+  header.appendChild(indexhead); 
+
+  const vef = el('h3');
+  var veftext = document.createTextNode("Vefforritun");
+  vef.appendChild(veftext);
+  const fyrir = el('h1');
+  var fyrirtext = document.createTextNode("Fyrirlestrar");
+  fyrir.appendChild(fyrirtext);
+  const cont = el('div');
+  cont.classList.add("indexheader__content");
+  cont.appendChild(vef);
+  cont.appendChild(fyrir);
+  header.appendChild(cont);
+
+  /*const head = lecture.title;
+  const title = el('h1', head);
+  title.classList.add('header__content');
+  header.appendChild(title);
+  */
 }
 
 export function loadLecture(data, page) {
@@ -89,6 +161,7 @@ export function loadLecture(data, page) {
 
   const url = new URL(window.location.href);
   const slug = url.searchParams.get('slug');
+
 
   let lecture;
   for(let i in data.lectures){
