@@ -243,7 +243,7 @@ export function loadLecture(data, page) {
   console.log(lecture.slug);
   //Bæta við event handler
   finished.addEventListener("click", () => {
-    window.localStorage.setItem('finished', slug);
+    window.localStorage.setItem(slug, 'finished');
   });
 
   finishdiv.appendChild(finished);
@@ -283,7 +283,7 @@ function save(slug){
   //const saved = window.localStorage.getItem('lecture');
   const div = document.querySelector('div');
   if (localStorage.getItem(slug) === null) {
-    window.localStorage.setItem('finished', slug);
+    window.localStorage.setItem(slug, 'finished');
 
   }else{
     return;
