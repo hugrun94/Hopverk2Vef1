@@ -60,7 +60,6 @@ export function loadIndex(data, page) {
   for (const i in data.lectures) {
     let lecture = data.lectures[i];
 
-
     const sl = lecture.slug;
     const link = el('a');
     link.href=`/fyrirlestur.html?slug=${sl}`;
@@ -85,6 +84,9 @@ export function loadIndex(data, page) {
     check.classList.add('lectures__checkbox');
     check.classList.add('lectures__checkbox--hidden');
     check.setAttribute('src','img/check.png');
+    if(localStorage.getItem(sl) == 'complete'){
+      check.classList = 'lectures__checkbox';
+    }
 
     const wrap = el('div',title,check);
     wrap.classList.add('lectures__titlewrap');
@@ -113,9 +115,14 @@ export function loadlectureheader(data, page){
   const header__image= el('div');
   const codeimg = lecture.image;
   const headimg = el('img');
-  headimg.setAttribute('src', lecture.image);
+  if(lecture.image){
+    headimg.setAttribute('src', lecture.image);
+    header__image.setAttribute('class', 'lectureheader__image');
+  }
+  else{
+    header__image.setAttribute('class', 'lectureheader__noimage');
+  }
   headimg.setAttribute('class', 'lectureheader__img');
-  header__image.setAttribute('class', 'lectureheader__image');
   header__image.appendChild(headimg);
   header.appendChild(header__image);
 
@@ -130,6 +137,9 @@ export function loadlectureheader(data, page){
   header__content.classList.add('lectureheader__content');
   header.appendChild(header__content);
 }
+
+
+
 export function loadindexheader(data, page){
   const header = page.querySelector('.indexheader');
 
@@ -252,6 +262,7 @@ export function loadLecture(data, page) {
 
   //Búa til button fyrir að fara til baka
   const backdiv = el('div');
+  backdiv.setAttribute('class', 'lecture__buttons__back');
   const back = el('button')
   const textback = document.createTextNode("Til Baka");
   const backlink = el('a');
@@ -260,30 +271,53 @@ export function loadLecture(data, page) {
   backlink.appendChild(back);
   backdiv.appendChild(backlink);
 
-
   //Búa til button fyrir að merkja við kláraðan fyrirlestur
-  const finishdiv = el('div')
   const finished = el('button')
-  const textfinish = document.createTextNode("Kláraður fyrirlestur");
+  const check = el('img');
+    check.classList.add('lectures__checkbox');
+    check.classList.add('lectures__checkbox--hidden');
+    check.setAttribute('src','img/check.png');
+  const finishedDIV = el('div');
+  if(localStorage.getItem(slug) == 'complete'){ 
+    check.classList = 'checkbox';
+    finished.setAttribute('class', 'lecture__buttons__finished--complete')
+  }
+  else{ 
+    check.classList = 'checkbox--hidden';
+    finished.setAttribute('class','lecture__buttons__finished');
+  }
+  const textfinish = document.createTextNode("Klára fyrirlestur");
   finished.appendChild(textfinish);
-  console.log(lecture.slug);
+  finishedDIV.appendChild(check);
+  finishedDIV.appendChild(finished);
   //Bæta við event handler
   finished.addEventListener("click", () => {
-    window.localStorage.setItem(slug, 'finished');
-  });
+    if(localStorage.getItem(slug) == 'complete'){ 
+      //breytum í 'not-finished'
+      window.localStorage.setItem(slug, 'not-complete');
+      finished.setAttribute('class','lecture__buttons__finished');
+      check.classList = 'checkbox--hidden';
 
-  finishdiv.appendChild(finished);
+    }
+    else{ 
+      //setjum finished
+      window.localStorage.setItem(slug, 'complete');
+      finished.classList += '--complete';
+      check.classList = 'checkbox';
+    }
+  });
 
 
    //Búa til div til að halda utanum báða takkana 
    const bothbuttons = el('div')
+   bothbuttons.setAttribute('class', 'lecture__buttons');
+   bothbuttons.appendChild(finishedDIV);
    bothbuttons.appendChild(backdiv);
-   bothbuttons.appendChild(finishdiv);
-   lecturepage.appendChild(bothbuttons)
+   lecturepage.appendChild(bothbuttons);
+ } 
+ // loadLecture() endar
 
-   
 
- }
 
  function isClicked(data, page, tegund){
   let element = document.getElementsByClassName(tegund);
