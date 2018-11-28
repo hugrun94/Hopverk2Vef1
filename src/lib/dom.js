@@ -149,10 +149,10 @@ export function loadLecture(data, page) {
   const finished = el('button')
   const textfinish = document.createTextNode("Kláraður fyrirlestur");
   finished.appendChild(textfinish);
-  
+  console.log(lecture.slug);
   //Bæta við event handler
   finished.addEventListener("click", () => {
-    save(lecture)
+    window.localStorage.setItem('finished', slug);
   });
 
   finishdiv.appendChild(finished);
@@ -188,16 +188,13 @@ export function loadLecture(data, page) {
 }
 
 
-function save(lecture){
+function save(slug){
   //const saved = window.localStorage.getItem('lecture');
   const div = document.querySelector('div');
-  if (lecture) {
-    console.log('Vistuð gögn:', lecture);
-    div.textContent = `Vistað: ${lecture}`;
+  if (localStorage.getItem(slug) === null) {
+    window.localStorage.setItem('finished', slug);
+
   }else{
-    console.log('Ekkert vistað, vista:', lecture );
-    //div.textContent = 'Ekkert vistað';
-    const json = JSON.stringify(lecture);
-    window.localStorage.setItem('lecture', lecture);
+    return;
   }
 } 
