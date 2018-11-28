@@ -49,6 +49,11 @@ img { /* stylelint-disable-line */
       justify-content: center;
       width: 100%;
     }
+    &__noimage{
+      background-color: colors(light-grey);
+      height: 100%;
+      width: 100%;
+    }
     &__img{
       width: 100%;
       object-fit: cover;
@@ -112,21 +117,33 @@ img { /* stylelint-disable-line */
         height: 30px
       }
     }
-    &__both{
-    display: flex; 
-    justify-content: center;
-    align-items: flex-end; 
-    flex-wrap: wrap; 
-    margin: auto; 
-    width: calc(100% - 40px);
-    max-width: 450px;
-
-    button{
-      background-color: transparent; 
-      padding: 10px 10px; 
-      border-style: none; 
+    &__buttons{
+      display: flex; 
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      margin: auto; 
+      width: 300px;
+      margin-bottom: 40px;
+    &__finished--complete{
+      color: green;
+      font-weight: bold;
     }
+
+      button{
+        font-family: fonts(roboto);
+        background-color: transparent; 
+        padding: 10px 10px; 
+        border-style: none; 
+      }
     }
   }
 }
  
+.checkbox{
+  width: 15px;
+  height: 15px;
+}
+.checkbox--hidden{
+  display: none;
+}
