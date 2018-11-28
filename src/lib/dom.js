@@ -132,27 +132,29 @@ export function loadLecture(data, page) {
       lecturepage.appendChild(code);
     } 
   }
-  const backdiv = el('div');
-    //Búa til button fyrir að fara til baka
-    const back = el('button')
-    const textback = document.createTextNode("Til Baka");
-    back.appendChild(textback);
-    //Bæta við event handler
-    back.addEventListener("click", () => {
-      isClicked(data,page,'til baka');
-    });
 
-  const finishdiv = el('div')
+  //Búa til button fyrir að fara til baka
+  const backdiv = el('div');
+  const back = el('button')
+  const textback = document.createTextNode("Til Baka");
+  const backlink = el('a');
+  backlink.href=`../../index.html`;
+  back.appendChild(textback);
+  backlink.appendChild(back);
+  backdiv.appendChild(backlink);
+
+
   //Búa til button fyrir að merkja við kláraðan fyrirlestur
+  const finishdiv = el('div')
   const finished = el('button')
   const textfinish = document.createTextNode("Kláraður fyrirlestur");
   finished.appendChild(textfinish);
+  
   //Bæta við event handler
   finished.addEventListener("click", () => {
-    isClicked(data,page,'Klárað');
+    save(lecture)
   });
 
-  backdiv.appendChild(back);
   finishdiv.appendChild(finished);
 
 
@@ -162,9 +164,6 @@ export function loadLecture(data, page) {
    bothbuttons.appendChild(finishdiv);
    lecturepage.appendChild(bothbuttons)
 
-
-
-   //Setja button undir lecture
    
 
  }
@@ -185,5 +184,20 @@ export function loadLecture(data, page) {
         classes.push("mystyle");
       element.className = classes.join(" "); 
     }
+  }
+}
+
+
+function save(lecture){
+  //const saved = window.localStorage.getItem('lecture');
+  const div = document.querySelector('div');
+  if (lecture) {
+    console.log('Vistuð gögn:', lecture);
+    div.textContent = `Vistað: ${lecture}`;
+  }else{
+    console.log('Ekkert vistað, vista:', lecture );
+    //div.textContent = 'Ekkert vistað';
+    const json = JSON.stringify(lecture);
+    window.localStorage.setItem('lecture', lecture);
   }
 } 
