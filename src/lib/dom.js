@@ -210,17 +210,30 @@ export function loadLecture(data, page) {
       head.classList.add('lecture__heading');
       lecturepage.appendChild(head);
     }else if(lec[i].type === 'list'){
+      const liarray = lec[i].data;
       const ul = el('ul')
-      ul.classList.add('lecture__ul');
-      for(let j in lec[j]){
-        const li = el('li', lec[j].data);
+      ul.classList. add('lecture__ul');
+      for(let j in liarray){
+        console.log('j=',j,'liarray[j]=',liarray[j])
+        const li = el('li', liarray[j]);
         li.classList.add('lecture__li');
-        lecturepage.appendChild(li);
+        ul.appendChild(li);
       }
+      lecturepage.appendChild(ul);
     }else if(lec[i].type === 'code'){
-      const code = el('code', lec[i].data);
-      code.classList.add('lecture__code');
-      lecturepage.appendChild(code);
+      // const code = el('code', lec[i].data);
+      // code.classList.add('lecture__code');
+      // lecturepage.appendChild(code);
+
+      const substrings = lec[i].data.split(/\r?\n/);
+      const codediv = el('div');
+      codediv.setAttribute('class', 'lecture__code')
+      for(let k in substrings){
+        const text = el('p', substrings[k]);
+        text.classList.add('lecture__code--p');
+        codediv.appendChild(text);
+      }
+      lecturepage.appendChild(codediv);
     } 
   }
   const backdiv = el('div');
