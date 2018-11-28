@@ -9,36 +9,46 @@ export function loadIndex(data, page) {
 
   const buttondiv = el('div')
   //Búa til button fyrir HTML
-  const button1 = el('button')
+  const button1 = el('button');
+  button1.classList.add("HTML");
   const texti1 = document.createTextNode("HTML");
   button1.appendChild(texti1);
 
   //Bæta við event handler
   button1.addEventListener("click", () => {
-    isClicked(data,page,'css');
-    isClicked(data,page,'javascript');
+    if(button1.className == "HTML"){
+      button1.className += "--toggled";
+    } else button1.className = "HTML";
+
+    isClicked(data,page,'html');
   });
 
   //Búa til button fyrir CSS
   const button2 = el('button')
+  button2.classList.add("CSS");
   const texti2 = document.createTextNode("CSS");
   button2.appendChild(texti2);
 
   //Bæta við event handler
   button2.addEventListener("click", () => {
-    isClicked(data,page,'javascript');
-    isClicked(data,page,'html');
+    if(button2.className == "CSS"){
+      button2.className += "--toggled";
+        } else button2.className = "CSS";
+    isClicked(data,page,'css');
   });
 
   //Búa til button fyrir Javascript
   const button3 = el('button')
+  button3.classList.add("JAVASCRIPT");
   const texti3 = document.createTextNode("JAVASCRIPT");
   button3.appendChild(texti3);
 
   //Bæta við event handler
   button3.addEventListener("click", () => {
-    isClicked(data,page,'css');
-    isClicked(data,page,'html');
+    if(button3.className == "JAVASCRIPT"){
+      button3.className += "--toggled";
+    } else button3.className = "JAVASCRIPT";
+    isClicked(data,page,'javascript');
   });
 
   buttondiv.appendChild(button1);
@@ -313,7 +323,7 @@ export function loadLecture(data, page) {
   let element = document.getElementsByClassName(tegund);
   for(let j = 0; j<element.length;j++){
     console.log(element[j].classList.value)
-    if (element[j].classList) { 
+    if (element[j].classList) {
       element[j].classList.toggle("hidden");
     } else {
       let classes = element[j].className.split(" ");
