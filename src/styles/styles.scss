@@ -151,6 +151,8 @@ img { /* stylelint-disable-line */
       &:hover{
         background-color: colors(light-grey);
     }
-    
   }
+}
+.html .hidden{
+  display: none; 
 }
