@@ -107,7 +107,8 @@ img { /* stylelint-disable-line */
       background-color: colors(light-grey);
     }
     .hidden{
-      display:none; 
+      display: none; 
+      
     }
   }
 
@@ -167,4 +168,8 @@ img { /* stylelint-disable-line */
     background-color: colors(green);
   }
 
+}
+.lectures a.hidden{
+  display: none; 
+  background-color: aqua;
 }
