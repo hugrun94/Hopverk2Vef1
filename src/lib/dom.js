@@ -15,7 +15,8 @@ export function loadIndex(data, page) {
 
   //Bæta við event handler
   button1.addEventListener("click", () => {
-    isClicked(data,page,'html');
+    isClicked(data,page,'css');
+    isClicked(data,page,'javascript');
   });
 
   //Búa til button fyrir CSS
@@ -25,7 +26,8 @@ export function loadIndex(data, page) {
 
   //Bæta við event handler
   button2.addEventListener("click", () => {
-    isClicked(data,page,'css');
+    isClicked(data,page,'javascript');
+    isClicked(data,page,'html');
   });
 
   //Búa til button fyrir Javascript
@@ -35,7 +37,8 @@ export function loadIndex(data, page) {
 
   //Bæta við event handler
   button3.addEventListener("click", () => {
-    isClicked(data,page,'javascript');
+    isClicked(data,page,'css');
+    isClicked(data,page,'html');
   });
 
   buttondiv.appendChild(button1);
