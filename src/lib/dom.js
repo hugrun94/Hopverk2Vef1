@@ -210,40 +210,55 @@ export function loadLecture(data, page) {
       head.classList.add('lecture__heading');
       lecturepage.appendChild(head);
     }else if(lec[i].type === 'list'){
+      const liarray = lec[i].data;
       const ul = el('ul')
-      ul.classList.add('lecture__ul');
-      for(let j in lec[j]){
-        const li = el('li', lec[j].data);
+      ul.classList. add('lecture__ul');
+      for(let j in liarray){
+        console.log('j=',j,'liarray[j]=',liarray[j])
+        const li = el('li', liarray[j]);
         li.classList.add('lecture__li');
-        lecturepage.appendChild(li);
+        ul.appendChild(li);
       }
+      lecturepage.appendChild(ul);
     }else if(lec[i].type === 'code'){
-      const code = el('code', lec[i].data);
-      code.classList.add('lecture__code');
-      lecturepage.appendChild(code);
+      // const code = el('code', lec[i].data);
+      // code.classList.add('lecture__code');
+      // lecturepage.appendChild(code);
+
+      const substrings = lec[i].data.split(/\r?\n/);
+      const codediv = el('div');
+      codediv.setAttribute('class', 'lecture__code')
+      for(let k in substrings){
+        const text = el('p', substrings[k]);
+        text.classList.add('lecture__code--p');
+        codediv.appendChild(text);
+      }
+      lecturepage.appendChild(codediv);
     } 
   }
-  const backdiv = el('div');
-    //Búa til button fyrir að fara til baka
-    const back = el('button')
-    const textback = document.createTextNode("Til Baka");
-    back.appendChild(textback);
-    //Bæta við event handler
-    back.addEventListener("click", () => {
-      isClicked(data,page,'til baka');
-    });
 
-  const finishdiv = el('div')
+  //Búa til button fyrir að fara til baka
+  const backdiv = el('div');
+  const back = el('button')
+  const textback = document.createTextNode("Til Baka");
+  const backlink = el('a');
+  backlink.href=`../../index.html`;
+  back.appendChild(textback);
+  backlink.appendChild(back);
+  backdiv.appendChild(backlink);
+
+
   //Búa til button fyrir að merkja við kláraðan fyrirlestur
+  const finishdiv = el('div')
   const finished = el('button')
   const textfinish = document.createTextNode("Kláraður fyrirlestur");
   finished.appendChild(textfinish);
+  console.log(lecture.slug);
   //Bæta við event handler
   finished.addEventListener("click", () => {
-    isClicked(data,page,'Klárað');
+    window.localStorage.setItem(slug, 'finished');
   });
 
-  backdiv.appendChild(back);
   finishdiv.appendChild(finished);
 
 
@@ -253,9 +268,6 @@ export function loadLecture(data, page) {
    bothbuttons.appendChild(finishdiv);
    lecturepage.appendChild(bothbuttons)
 
-
-
-   //Setja button undir lecture
    
 
  }
@@ -277,4 +289,17 @@ export function loadLecture(data, page) {
       element.className = classes.join(" "); 
     }
   }
+}
+
+
+function save(slug){
+  //const saved = window.localStorage.getItem('lecture');
+  const div = document.querySelector('div');
+  if (localStorage.getItem(slug) === null) {
+    window.localStorage.setItem(slug, 'finished');
+
+  }else{
+    return;
+  }
 } 
+
