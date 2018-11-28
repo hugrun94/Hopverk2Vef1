@@ -87,6 +87,7 @@ img { /* stylelint-disable-line */
 
     &__heading{
       font-family: fonts(roboto), serif; 
+      margin: 30px 0 10px 0;
     }
 
     &__quote{
@@ -104,6 +105,12 @@ img { /* stylelint-disable-line */
 
     &__code{
       font-family: fonts(roboto); 
+      margin: 20px 0;
+      p{
+        white-space: pre;
+        margin: 0;
+        height: 30px
+      }
     }
     &__both{
     display: flex; 
