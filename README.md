@@ -1,21 +1,4 @@
 # Hópverkefni 2
-
-#### Github branches - instructions
-Go to existing branch f.ex. master:  
-`git checkout master`
-
-Creating a new branch named f.ex. css (branch to work on css):  
-`git checkout -b css`
-
-Committing and pushing after making some changes:  
-`git add .`  
-`git commit -m "Short message about the changes you made"`  
-`git pull origin master`  
-`git push origin css`
-
-To merge with master go to github.com/hugrun94/Hopverk2Vef1 and create a pull request.
-
-# Hópverkefni 2
 ##### Björgvin Hall, Emma Líf Jónsdóttir og Hugrún Guðmundsdóttir 
 bjh45@hi.is
 elj44@hi.is
@@ -27,15 +10,15 @@ Hvernig skal setja upp verkefnið:
 `npm install`
 
 Til að vinna í verkefninu:
-Opnum browser-sync með `npm run browser-sync`
-Keyrum sass watch með `npm run sass-watch`
+Til að keyra sass-watch, rollup-watch og browser-sync þá keyrum við línuna `npm run dev`.
+
 
 
 Verkefnið er með eftirfarandi skjölum
 -README.md skjal sem gefur til kynna upplýsingar um verkefnið
 - index.html sem er heimasíða síðunnar
 - gird.css sem gefur grind fyrir síðuna
-- rollup.confic.js er notað til að tengja saman??
+- rollup.confic.js er skjal sem stýrir npm pakkanum rollup, um hvernig skal taka saman skjölin og sameina það í bundle.js
 - package.json og package-lock.json fyrir npm pakka
 - src (mappa): Með allar js og scss skrár í fleirum möppum
     - lib (mappa): inniheldur js skrár sem er notaðar til að halda utanum mismunandi kóða
@@ -49,8 +32,6 @@ Verkefnið er með eftirfarandi skjölum
     - index.js
 - Img(mappa): Allar myndir sem notaðar eru í verkefninu
 - utlit(mappa): Myndir af síðu sem stílað var eftir 
-
-
 
 
 
