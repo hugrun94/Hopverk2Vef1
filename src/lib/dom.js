@@ -9,32 +9,45 @@ export function loadIndex(data, page) {
 
   const buttondiv = el('div')
   //Búa til button fyrir HTML
-  const button1 = el('button')
+  const button1 = el('button');
+  button1.classList.add("HTML");
   const texti1 = document.createTextNode("HTML");
   button1.appendChild(texti1);
 
   //Bæta við event handler
   button1.addEventListener("click", () => {
+    if(button1.className == "HTML"){
+      button1.className += "--toggled";
+    } else button1.className = "HTML";
+
     isClicked(data,page,'html');
   });
 
   //Búa til button fyrir CSS
   const button2 = el('button')
+  button2.classList.add("CSS");
   const texti2 = document.createTextNode("CSS");
   button2.appendChild(texti2);
 
   //Bæta við event handler
   button2.addEventListener("click", () => {
+    if(button2.className == "CSS"){
+      button2.className += "--toggled";
+        } else button2.className = "CSS";
     isClicked(data,page,'css');
   });
 
   //Búa til button fyrir Javascript
   const button3 = el('button')
+  button3.classList.add("JAVASCRIPT");
   const texti3 = document.createTextNode("JAVASCRIPT");
   button3.appendChild(texti3);
 
   //Bæta við event handler
   button3.addEventListener("click", () => {
+    if(button3.className == "JAVASCRIPT"){
+      button3.className += "--toggled";
+    } else button3.className = "JAVASCRIPT";
     isClicked(data,page,'javascript');
   });
 
@@ -46,7 +59,6 @@ export function loadIndex(data, page) {
 
   for (const i in data.lectures) {
     let lecture = data.lectures[i];
-
 
     const sl = lecture.slug;
     const link = el('a');
@@ -72,12 +84,16 @@ export function loadIndex(data, page) {
     check.classList.add('lectures__checkbox');
     check.classList.add('lectures__checkbox--hidden');
     check.setAttribute('src','img/check.png');
+    if(localStorage.getItem(sl) == 'complete'){
+      check.classList = 'lectures__checkbox';
+    }
 
     const wrap = el('div',title,check);
     wrap.classList.add('lectures__titlewrap');
 
     element.appendChild(wrap);
-    element.classList.add(''+ data.lectures[i].category);
+    link.classList.add(''+ data.lectures[i].category);
+    link.classList.add(''+ 'hidden');
     link.appendChild(element);
     lectures.appendChild(link);
   }
@@ -100,9 +116,14 @@ export function loadlectureheader(data, page){
   const header__image= el('div');
   const codeimg = lecture.image;
   const headimg = el('img');
-  headimg.setAttribute('src', lecture.image);
+  if(lecture.image){
+    headimg.setAttribute('src', lecture.image);
+    header__image.setAttribute('class', 'lectureheader__image');
+  }
+  else{
+    header__image.setAttribute('class', 'lectureheader__noimage');
+  }
   headimg.setAttribute('class', 'lectureheader__img');
-  header__image.setAttribute('class', 'lectureheader__image');
   header__image.appendChild(headimg);
   header.appendChild(header__image);
 
@@ -117,6 +138,9 @@ export function loadlectureheader(data, page){
   header__content.classList.add('lectureheader__content');
   header.appendChild(header__content);
 }
+
+
+
 export function loadindexheader(data, page){
   const header = page.querySelector('.indexheader');
 
@@ -239,6 +263,7 @@ export function loadLecture(data, page) {
 
   //Búa til button fyrir að fara til baka
   const backdiv = el('div');
+  backdiv.setAttribute('class', 'lecture__buttons__back');
   const back = el('button')
   const textback = document.createTextNode("Til Baka");
   const backlink = el('a');
@@ -247,48 +272,76 @@ export function loadLecture(data, page) {
   backlink.appendChild(back);
   backdiv.appendChild(backlink);
 
-
   //Búa til button fyrir að merkja við kláraðan fyrirlestur
-  const finishdiv = el('div')
   const finished = el('button')
-  const textfinish = document.createTextNode("Kláraður fyrirlestur");
+  const check = el('img');
+    check.classList.add('lectures__checkbox');
+    check.classList.add('lectures__checkbox--hidden');
+    check.setAttribute('src','img/check.png');
+  const finishedDIV = el('div');
+  if(localStorage.getItem(slug) == 'complete'){ 
+    check.classList = 'checkbox';
+    finished.setAttribute('class', 'lecture__buttons__finished--complete')
+  }
+  else{ 
+    check.classList = 'checkbox--hidden';
+    finished.setAttribute('class','lecture__buttons__finished');
+  }
+  const textfinish = document.createTextNode("Klára fyrirlestur");
   finished.appendChild(textfinish);
-  console.log(lecture.slug);
+  finishedDIV.appendChild(check);
+  finishedDIV.appendChild(finished);
   //Bæta við event handler
   finished.addEventListener("click", () => {
-    window.localStorage.setItem(slug, 'finished');
-  });
+    if(localStorage.getItem(slug) == 'complete'){ 
+      //breytum í 'not-finished'
+      window.localStorage.setItem(slug, 'not-complete');
+      finished.setAttribute('class','lecture__buttons__finished');
+      check.classList = 'checkbox--hidden';
 
-  finishdiv.appendChild(finished);
+    }
+    else{ 
+      //setjum finished
+      window.localStorage.setItem(slug, 'complete');
+      finished.classList += '--complete';
+      check.classList = 'checkbox';
+    }
+  });
 
 
    //Búa til div til að halda utanum báða takkana 
    const bothbuttons = el('div')
+   bothbuttons.setAttribute('class', 'lecture__buttons');
+   bothbuttons.appendChild(finishedDIV);
    bothbuttons.appendChild(backdiv);
-   bothbuttons.appendChild(finishdiv);
-   lecturepage.appendChild(bothbuttons)
+   lecturepage.appendChild(bothbuttons);
+ } 
+ // loadLecture() endar
 
-   
 
- }
 
- function isClicked(data, page, tegund){
-  let element = document.getElementsByClassName(tegund);
-  for(let j = 0; j<element.length;j++){
-    console.log(element[j].classList.value)
-    if (element[j].classList) { 
-      element[j].classList.toggle("hidden");
-    } else {
-      let classes = element[j].className.split(" ");
-      let i = classes.indexOf("hidden");
-
-      if (i >= 0) 
-        classes.splice(i, 1);
-      else 
-        classes.push("mystyle");
-      element.className = classes.join(" "); 
+ function isClicked(data, page, tegund){ 
+   let element = document.getElementsByClassName(tegund);
+   for(let j=0; j<element.length; j++){
+     if(element[j].classList.value == 'html'){
+       element[j].classList.value = 'html hidden';
+      }
+      else if(element[j].classList.value == 'css'){
+        element[j].classList.value = 'css hidden';
+      }
+      else if(element[j].classList.value == 'javascript'){
+        element[j].classList.value = 'javascript hidden';
+      }
+      else if(element[j].classList.value == 'html hidden'){
+        element[j].classList.value = 'html';
+      }
+      else if(element[j].classList.value == 'css hidden'){
+        element[j].classList.value = 'css';
+      }
+      else if(element[j].classList.value == 'javascript hidden'){
+        element[j].classList.value = 'javascript';
+      }
     }
-  }
 }
 
 

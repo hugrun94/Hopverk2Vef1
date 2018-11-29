@@ -106,7 +106,12 @@ img { /* stylelint-disable-line */
     &:hover{
       background-color: colors(light-grey);
     }
+    .hidden{
+      display: none; 
+      
+    }
   }
+
   &__titlewrap{
     margin: 0 10px;
     display: flex;
@@ -150,9 +155,29 @@ img { /* stylelint-disable-line */
 
       &:hover{
         background-color: colors(light-grey);
+<<<<<<< HEAD
     }
   }
 }
 .html .hidden{
   display: none; 
+=======
+      }
+    
+  }
+  .HTML--toggled{
+    background-color: colors(green);
+  }
+  .CSS--toggled{
+    background-color: colors(green);
+  }
+  .JAVASCRIPT--toggled{
+    background-color: colors(green);
+  }
+
+}
+.lectures a.hidden{
+  display: none; 
+  background-color: aqua;
+>>>>>>> 2de14aa65df3e2b8957d8d430969caa5fe94c291
 }
