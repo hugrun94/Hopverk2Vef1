@@ -152,6 +152,7 @@ img { /* stylelint-disable-line */
     border-radius: 8px; 
     padding: 10px 10px; 
     transition: background-color 0.3s ease-in-out;
+    border: none;
 
       &:hover{
         background-color: colors(light-grey);
@@ -160,16 +161,27 @@ img { /* stylelint-disable-line */
   }
   .HTML--toggled{
     background-color: colors(green);
+    &:hover{
+      background-color: colors(dark-green);
+    }
   }
   .CSS--toggled{
     background-color: colors(green);
+    &:hover{
+      background-color: colors(dark-green);
+    }
   }
   .JAVASCRIPT--toggled{
     background-color: colors(green);
+    &:hover{
+      background-color: colors(dark-green);
+    }
   }
 
 }
 .lectures a.hidden{
   display: none; 
-  background-color: aqua;
+}
+#allvisible{
+  display: flex;
 }
