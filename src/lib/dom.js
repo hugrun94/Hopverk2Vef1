@@ -92,7 +92,8 @@ export function loadIndex(data, page) {
     wrap.classList.add('lectures__titlewrap');
 
     element.appendChild(wrap);
-    element.classList.add(''+ data.lectures[i].category);
+    link.classList.add(''+ data.lectures[i].category);
+    link.classList.add(''+ 'hidden');
     link.appendChild(element);
     lectures.appendChild(link);
   }
@@ -319,23 +320,28 @@ export function loadLecture(data, page) {
 
 
 
- function isClicked(data, page, tegund){
-  let element = document.getElementsByClassName(tegund);
-  for(let j = 0; j<element.length;j++){
-    console.log(element[j].classList.value)
-    if (element[j].classList) {
-      element[j].classList.toggle("hidden");
-    } else {
-      let classes = element[j].className.split(" ");
-      let i = classes.indexOf("hidden");
-
-      if (i >= 0) 
-        classes.splice(i, 1);
-      else 
-        classes.push("mystyle");
-      element.className = classes.join(" "); 
+ function isClicked(data, page, tegund){ 
+   let element = document.getElementsByClassName(tegund);
+   for(let j=0; j<element.length; j++){
+     if(element[j].classList.value == 'html'){
+       element[j].classList.value = 'html hidden';
+      }
+      else if(element[j].classList.value == 'css'){
+        element[j].classList.value = 'css hidden';
+      }
+      else if(element[j].classList.value == 'javascript'){
+        element[j].classList.value = 'javascript hidden';
+      }
+      else if(element[j].classList.value == 'html hidden'){
+        element[j].classList.value = 'html';
+      }
+      else if(element[j].classList.value == 'css hidden'){
+        element[j].classList.value = 'css';
+      }
+      else if(element[j].classList.value == 'javascript hidden'){
+        element[j].classList.value = 'javascript';
+      }
     }
-  }
 }
 
 
