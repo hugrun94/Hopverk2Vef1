@@ -1,11 +1,12 @@
 @import "config";
 
-@function colors($color-name){
-	@return map-get($colors, $color-name)
+@function colors($color-name) {
+  @return map-get($colors, $color-name);
 }
-@function fonts($font-name){
-	@return map-get($fonts, $font-name)
+@function fonts($font-name) {
+  @return map-get($fonts, $font-name);
 }
+
 * {
   padding: 0;
   margin: 0;
@@ -25,125 +26,146 @@ html { /* stylelint-disable-line */
   //font-family: $font-main;
   font-size: 16px;
 }
-.lectureheader{
-  order: 1; 
+
+.lectureheader {
+  order: 1;
 }
 
 img { /* stylelint-disable-line */
   max-width: 100%;
 }
-.lecture-page{
-  .lectureheader{
-    margin-bottom: $gutter;
+
+.lecture-page {
+  .lectureheader {
     display: flex;
+    margin-bottom: $gutter;
     flex-wrap: wrap;
-    h3{
+
+    h3 {
       font-family: fonts(roboto), serif;
       text-transform: uppercase;
     }
-    h1{
+
+    h1 {
       font-family: fonts(roboto), serif;
     }
-    &__image{
+
+    &__image {
       display: flex;
       justify-content: center;
       width: 100%;
     }
-    &__noimage{
-      background-color: colors(light-grey);
+
+    &__noimage {
+      width: 100%;
       height: 100%;
-      width: 100%;
-    }
-    &__img{
-      width: 100%;
-      object-fit: cover;
-      opacity: 0.6;
-      background-size: 100%;
-      height: 300px; // Hæð á haus
-      @media(max-width: 750px){
-        height: 125px;
-      }
-    }
-    
-    &__content{
-      margin: -300px auto 0 auto;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      @media(max-width: 750px){
-      margin: -130px auto 0 auto;        
-      }
-    }
-  }
-  .lecture {
-    max-width: calc(1200px - 410px);
-    width: calc(100% - 40px);
-    margin: auto;
-    font-family: fonts(lora), serif;
-    font-size: 1.2em;
-    font-weight: 500; 
-    line-height: 1.6;
-    
-    p{
-      margin: 1.5em 0em; 
-    }
+      background-color: colors(light-grey);
 
-    &__heading{
-      font-family: fonts(roboto), serif; 
-      margin: 30px 0 10px 0;
-    }
-
-    &__quote{
-      width: calc(100% + 44px);
-      background-color: colors(lighter-grey);
-      margin: 0px -20px 0px -22px; 
-      padding: 20px;
     }
 
     &__img {
-      width: 100%; 
+      width: 100%;
+      object-fit: cover;
+      height: 300px; // Hæð á haus
+      background-size: 100%;
+      opacity: 0.6;
+      @media (max-width: 750px) {
+        height: 125px;
+      }
+    }
+
+    &__content {
+      display: flex;
+      margin: -300px auto 0 auto;
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      @media (max-width: 750px) {
+        margin: -130px auto 0 auto;
+      }
+    }
+  }
+
+  .lecture {
+    width: calc(100% - 40px);
+
+    max-width: calc(1200px - 410px);
+    margin: auto;
+    font-family: fonts(lora), serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    line-height: 1.6;
+
+    p {
+      margin: 1.5em 0;
+    }
+
+    &__heading {
+      margin: 30px 0 10px;
+
+      font-family: fonts(roboto), serif;
+    }
+
+    &__quote {
+      width: calc(100% + 44px);
+
+      padding: 20px;
+
+      margin: 0 -20px 0 -22px;
+      background-color: colors(lighter-grey);
+
+    }
+
+    &__img {
+      width: 100%;
       height: 500px;
       background-size: 100%;
     }
 
-    &__code{
-      font-family: fonts(roboto); 
+    &__code {
       margin: 20px 0;
-      p{
-        white-space: pre;
+
+      font-family: fonts(roboto);
+
+      p {
+        height: 30px;
+
         margin: 0;
-        height: 30px
+        white-space: pre;
+
       }
     }
-    &__buttons{
-      display: flex; 
+
+    &__buttons {
+      display: flex;
+      width: 300px;
+      margin: auto;
+      margin-bottom: 40px;
+      text-align: center;
       flex-direction: column;
       justify-content: center;
-      text-align: center;
-      margin: auto; 
-      width: 300px;
-      margin-bottom: 40px;
-    &__finished--complete{
-      color: green;
-      font-weight: bold;
-    }
 
-      button{
+      &__finished--complete {
+        font-weight: bold;
+        /* stylelint-disable-next-line */
+        color: green;
+      }
+
+      button {
+        padding: 10px;
         font-family: fonts(roboto);
-        background-color: transparent; 
-        padding: 10px 10px; 
-        border-style: none; 
+        background-color: transparent;
+        border-style: none;
       }
     }
   }
 }
- 
-.checkbox{
+
+.checkbox {
   width: 15px;
   height: 15px;
 }
-.checkbox--hidden{
+
+.checkbox--hidden {
   display: none;
 }

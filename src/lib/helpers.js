@@ -1,4 +1,6 @@
-import { loadIndex, loadLecture, loadindexheader, loadlectureheader} from './dom';
+import {
+  loadIndex, loadLecture, loadindexheader, loadlectureheader,
+} from './dom';
 
 export function empty(element) {
   while (element.firstChild) {
@@ -15,8 +17,7 @@ export function loadData(isLecturePage, page) {
       throw new Error('Villa kom upp');
     })
     .then((data) => {
-      if(isLecturePage) {
-        console.log("Halló")
+      if (isLecturePage) {
         loadlectureheader(data, page);
         loadLecture(data, page);
       } else {
@@ -26,21 +27,5 @@ export function loadData(isLecturePage, page) {
     })
     .catch((error) => {
       console.error(error);
-    })
-}
-
-export function el(name, ...children) {
-  const element = document.createElement(name);
-
-  if (Array.isArray(children)) {
-    children.forEach((child) => {
-      if (typeof child === 'string') {
-        element.appendChild(document.createTextNode(child));
-      } else if (child) {
-        element.appendChild(child);
-      }
     });
-  }
-
-  return element;
 }
