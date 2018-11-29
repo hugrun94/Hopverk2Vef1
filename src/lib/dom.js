@@ -18,9 +18,12 @@ export function loadIndex(data, page) {
   button1.addEventListener("click", () => {
     if(button1.className == "HTML"){
       button1.className += "--toggled";
-    } else button1.className = "HTML";
+      isClicked('html');
+    } else{
+      button1.className = "HTML";
+      isClicked('html');
+    } 
 
-    isClicked(data,page,'html');
   });
 
   //Búa til button fyrir CSS
@@ -33,8 +36,11 @@ export function loadIndex(data, page) {
   button2.addEventListener("click", () => {
     if(button2.className == "CSS"){
       button2.className += "--toggled";
-        } else button2.className = "CSS";
-    isClicked(data,page,'css');
+      isClicked('css');
+    } else{ 
+      button2.className = "CSS";
+      isClicked('css');      
+    }
   });
 
   //Búa til button fyrir Javascript
@@ -47,8 +53,11 @@ export function loadIndex(data, page) {
   button3.addEventListener("click", () => {
     if(button3.className == "JAVASCRIPT"){
       button3.className += "--toggled";
-    } else button3.className = "JAVASCRIPT";
-    isClicked(data,page,'javascript');
+      isClicked('javascript');
+    } else{ 
+      button3.className = "JAVASCRIPT";
+      isClicked('javascript');
+    }
   });
 
   buttondiv.appendChild(button1);
@@ -97,6 +106,7 @@ export function loadIndex(data, page) {
     link.appendChild(element);
     lectures.appendChild(link);
   }
+  checkAll();
 }
 
 export function loadlectureheader(data, page){
@@ -320,28 +330,39 @@ export function loadLecture(data, page) {
 
 
 
- function isClicked(data, page, tegund){ 
-   let element = document.getElementsByClassName(tegund);
-   for(let j=0; j<element.length; j++){
-     if(element[j].classList.value == 'html'){
-       element[j].classList.value = 'html hidden';
-      }
-      else if(element[j].classList.value == 'css'){
-        element[j].classList.value = 'css hidden';
-      }
-      else if(element[j].classList.value == 'javascript'){
-        element[j].classList.value = 'javascript hidden';
-      }
-      else if(element[j].classList.value == 'html hidden'){
-        element[j].classList.value = 'html';
-      }
-      else if(element[j].classList.value == 'css hidden'){
-        element[j].classList.value = 'css';
-      }
-      else if(element[j].classList.value == 'javascript hidden'){
-        element[j].classList.value = 'javascript';
-      }
+ function isClicked(tegund){ 
+  let element = document.getElementsByClassName(tegund);
+  for(let j=0; j<element.length; j++){
+    if(element[j].classList.value == 'html'){
+      element[j].classList.value = 'html hidden';
+     }
+     else if(element[j].classList.value == 'css'){
+       element[j].classList.value = 'css hidden';
+     }
+     else if(element[j].classList.value == 'javascript'){
+       element[j].classList.value = 'javascript hidden';
+     }
+     else if(element[j].classList.value == 'html hidden'){
+       element[j].classList.value = 'html';
+     }
+     else if(element[j].classList.value == 'css hidden'){
+       element[j].classList.value = 'css';
+     }
+     else if(element[j].classList.value == 'javascript hidden'){
+       element[j].classList.value = 'javascript';
+     }
+   }
+ checkAll();
+}
+
+function checkAll(){
+ let hiddenElements = document.getElementsByClassName('hidden');
+ for(let j=0; j<hiddenElements.length; j++){
+    if(hiddenElements.length === 13){
+      hiddenElements[j].id = 'allvisible';
     }
+    else hiddenElements[j].id = '';
+  }
 }
 
 
