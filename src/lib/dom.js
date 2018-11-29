@@ -320,7 +320,7 @@ export function loadLecture(data, page) {
 
 
 
- function isClicked(data, page, tegund){
+ function isClicked(data, page, tegund){ 
    let element = document.getElementsByClassName(tegund);
    for(let j=0; j<element.length; j++){
      if(element[j].classList.value == 'html'){
