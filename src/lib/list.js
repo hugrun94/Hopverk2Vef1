@@ -1,4 +1,4 @@
-import { empty, loadData, el } from './helpers';
+import { loadData } from './helpers';
 
 export default class List {
   constructor() {
@@ -6,8 +6,6 @@ export default class List {
   }
 
   load(isLecturePage, page) {
-  	console.log("fda");
-    const data = loadData(isLecturePage, page);
-
+    loadData(isLecturePage, page);
   }
 }
